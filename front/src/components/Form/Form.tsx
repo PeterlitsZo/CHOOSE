@@ -89,6 +89,10 @@ export const Form: Component<FormProps> = (props) => {
             >No</div>
           </div>
         </Show>
+
+        <Show when={answer().state == 'ready-to-submit'}>
+          <button class={styles.Button}>Submit and Next</button>
+        </Show>
       </div>
     </div>
   );

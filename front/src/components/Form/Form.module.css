@@ -7,6 +7,8 @@
 }
 
 .Form {
+  display: flex;
+  flex-direction: column;
   color: #333;
   width: 64rem;
   line-height: 2rem;
@@ -56,5 +58,21 @@
 }
 
 .Choice.choosed:hover {
+  background-color: rgb(20, 56, 91);
+}
+
+.Button {
+  cursor: pointer;
+  background-color: rgb(40, 83, 126);
+  color: #EEE;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem 2.5rem;
+  line-height: 2rem;
+  font-size: 1.5rem;
+  align-self: end;
+}
+
+.Button:hover {
   background-color: rgb(20, 56, 91);
 }
