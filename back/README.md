@@ -23,7 +23,7 @@ Example：
 
 ```json
 {
-    "id": "99f9",
+    "id": 1,
     "user_name": "foo",
     "question_id": "ff9f",
     "answer": "I think..."
