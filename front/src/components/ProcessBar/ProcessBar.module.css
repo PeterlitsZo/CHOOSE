@@ -1,0 +1,14 @@
+.Main {
+  position: relative;
+  background-color: #DDD;
+  height: 2rem;
+  width: 100%;
+}
+
+.Sub {
+  position: absolute;
+  background-color: rgb(40, 83, 126);
+  left: 0;
+  top: 0;
+  bottom: 0;
+}

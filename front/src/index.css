@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  background-color: #EEE;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
