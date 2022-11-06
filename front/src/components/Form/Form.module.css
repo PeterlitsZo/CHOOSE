@@ -1,0 +1,60 @@
+.FormWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  overflow: auto;
+}
+
+.Form {
+  color: #333;
+  width: 64rem;
+  line-height: 2rem;
+  font-size: 1.5rem;
+  padding: 6rem 0;
+}
+
+.Content {
+  margin-bottom: 3rem;
+}
+
+.Question {
+  border: 1px solid #777;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.Title {
+  padding: 1rem;
+  border-bottom: 1px solid #777;
+}
+
+.TitlePrefix {
+  font-weight: 700;
+  color: rgb(40, 83, 126);
+}
+
+.Choice {
+  cursor: pointer;
+  padding: 1rem;
+  border-bottom: 1px solid #777;
+}
+
+.Choice.withoutBottomBorder {
+  border-bottom: none;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.Choice.choosed {
+  background-color: rgb(40, 83, 126);
+  color: #EEE;
+}
+
+.Choice:hover {
+  background-color: #DDD;
+}
+
+.Choice.choosed:hover {
+  background-color: rgb(20, 56, 91);
+}
