@@ -6,6 +6,8 @@ CHOOSE 的后端服务。使用 [go migrate](https://github.com/golang-migrate/m
 # 安装 migrate 工具。
 go install -tags 'sqlite3' github.com/golang-migrate/migrate/v4/cmd/migrate@latest
 # 模式迁移。
+bash db/migrate.sh up
+# 了解更多模式迁移的信息：
 bash db/migrate.sh
 ```
 
@@ -37,6 +39,10 @@ Example：
 {
     "id": "ff9f",
     "context": "To be or not to be...",
-    "question": "How about..."
+    "question": "How about...",
+    "choices": [
+        "foo",
+        "bar"
+    ]
 }
 ```
