@@ -1,1 +1,3 @@
+/migration
 database.sqlite
+migrate.sh
