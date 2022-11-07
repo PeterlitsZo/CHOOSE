@@ -1,8 +1,3 @@
-# MAN Document:
-# - 使用 bash migrate.sh 来使用 migration 以将模式迁移到最新模式。
-# - 如果带有 "create" 参数，那么将剩下的参数作为名字，生成迁移 SQL 模板。
-# - 如果都不满足，那么退化到使用指定了 database 和 source 参数的 migrate 命令（见 back/README.md）
-
 DIR=$(cd $(dirname $0); pwd)
 
 CREATE_COMMAND="migrate create -ext sql -seq -dir $DIR/migration"

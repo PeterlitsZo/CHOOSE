@@ -2,7 +2,7 @@ package handler
 
 import (
 	"fmt"
-	"github.com/PeterlitsZo/CHOOSE/back/db/service"
+	service2 "github.com/PeterlitsZo/CHOOSE/back/service"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
@@ -12,16 +12,16 @@ type CreateAnswerImpl struct {
 }
 
 func (g *CreateAnswerImpl) Handle() {
-	db := service.Db.Session(&gorm.Session{NewDB: true})
+	db := service2.Db.Session(&gorm.Session{NewDB: true})
 	if db.Error != nil {
 		panic(db.Error)
 	}
-	db = db.Model(&service.Answer{})
+	db = db.Model(&service2.Answer{})
 	if db.Error != nil {
 		responseError(g.Context, db.Error)
 		return
 	}
-	var ans service.Answer
+	var ans service2.Answer
 	if err := g.ShouldBind(&ans); err != nil {
 		responseError(g.Context, err)
 		return

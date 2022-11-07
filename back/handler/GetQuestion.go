@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"github.com/PeterlitsZo/CHOOSE/back/db/service"
+	service2 "github.com/PeterlitsZo/CHOOSE/back/service"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
@@ -11,17 +11,17 @@ type GetQuestionImpl struct {
 }
 
 func (g *GetQuestionImpl) Handle() {
-	db := service.Db.Session(&gorm.Session{NewDB: true})
+	db := service2.Db.Session(&gorm.Session{NewDB: true})
 	if db.Error != nil {
 		panic(db.Error)
 	}
-	db = db.Model(&service.Question{})
+	db = db.Model(&service2.Question{})
 	if db.Error != nil {
 		responseError(g.Context, db.Error)
 		return
 	}
 	id := g.Param("id")
-	var ques service.Question
+	var ques service2.Question
 	db.Where("id = ?", id).Scan(&ques)
 	if db.Error != nil {
 		responseError(g.Context, db.Error)

@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"github.com/PeterlitsZo/CHOOSE/back/db/service"
+	service2 "github.com/PeterlitsZo/CHOOSE/back/service"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
@@ -11,11 +11,11 @@ type ListAnswerImpl struct {
 }
 
 func (g *ListAnswerImpl) Handle() {
-	db := service.Db.Session(&gorm.Session{NewDB: true})
+	db := service2.Db.Session(&gorm.Session{NewDB: true})
 	if db.Error != nil {
 		panic(db.Error)
 	}
-	db = db.Model(&service.Answer{})
+	db = db.Model(&service2.Answer{})
 	if db.Error != nil {
 		responseError(g.Context, db.Error)
 		return

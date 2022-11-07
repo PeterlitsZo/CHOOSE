@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/PeterlitsZo/CHOOSE/back/db/service"
+	"github.com/PeterlitsZo/CHOOSE/back/service"
 	"github.com/gin-gonic/gin"
 )
 
