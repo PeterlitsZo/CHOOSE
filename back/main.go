@@ -10,6 +10,7 @@ func init() {
 }
 
 func main() {
+	//gin.SetMode(gin.ReleaseMode) // 生产模式
 	r := gin.Default()
 
 	registerRouter(r)

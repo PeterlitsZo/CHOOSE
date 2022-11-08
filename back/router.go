@@ -11,4 +11,5 @@ func registerChoose(r *gin.Engine) {
 	choose.POST("/api/v1/answers", CreateAnswer)
 	choose.GET("/api/v1/answers", ListAnswer)
 	choose.GET("/api/v1/questions/:id", GetQuestion)
+	choose.GET("/api/v1/questions", ListQuestion)
 }

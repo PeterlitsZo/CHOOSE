@@ -6,11 +6,11 @@ import (
 	"gorm.io/gorm"
 )
 
-type GetQuestionImpl struct {
+type ListQuestionImpl struct {
 	*gin.Context
 }
 
-func (g *GetQuestionImpl) Handle() {
+func (g *ListQuestionImpl) Handle() {
 	db := service.Db.Session(&gorm.Session{NewDB: true})
 	if db.Error != nil {
 		panic(db.Error)
@@ -20,14 +20,17 @@ func (g *GetQuestionImpl) Handle() {
 		responseError(g.Context, db.Error)
 		return
 	}
-	id := g.Param("id")
-	var ques service.Question
-	db.Where("id = ?", id).Scan(&ques)
+	if db.Error != nil {
+		responseError(g.Context, db.Error)
+		return
+	}
+	ret := make([]service.Question, 0)
+	db.Find(&ret)
 	if db.Error != nil {
 		responseError(g.Context, db.Error)
 		return
 	}
 	g.JSON(200, gin.H{
-		"question": ques,
+		"questionList": ret,
 	})
 }

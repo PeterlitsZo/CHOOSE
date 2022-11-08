@@ -25,3 +25,10 @@ func GetQuestion(g *gin.Context) {
 	}
 	h.Handle()
 }
+
+func ListQuestion(g *gin.Context) {
+	h := handler.ListQuestionImpl{
+		Context: g,
+	}
+	h.Handle()
+}
