@@ -21,7 +21,11 @@ func (g *ListAnswerImpl) Handle() {
 		return
 	}
 	userName := g.Query("user_name")
-	db.Select("question, answer").Joins("join questions on answers.question_id = questions.id where answers.user_name = ?", userName)
+	if userName != "" {
+		db = db.Select("question, answer").Joins("join questions on answers.question_id = questions.id where answers.user_name = ?", userName)
+	} else {
+		db = db.Select("question, answer").Joins("join questions on answers.question_id = questions.id", userName)
+	}
 	if db.Error != nil {
 		responseError(g.Context, db.Error)
 		return
