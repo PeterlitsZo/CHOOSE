@@ -15,7 +15,7 @@ func main() {
 
 	registerRouter(r)
 
-	if err := r.Run(); err != nil {
+	if err := r.Run(":8033"); err != nil {
 		panic(err)
 	}
 }
