@@ -27,7 +27,5 @@ func (g *GetQuestionImpl) Handle() {
 		responseError(g.Context, db.Error)
 		return
 	}
-	g.JSON(200, gin.H{
-		"question": ques,
-	})
+	g.JSON(200, ques)
 }

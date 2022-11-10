@@ -37,7 +37,7 @@ func (g *ListAnswerImpl) Handle() {
 		return
 	}
 	g.JSON(200, gin.H{
-		"answerList": ret,
+		"answers": ret,
 	})
 }
 

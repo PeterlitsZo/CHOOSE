@@ -29,6 +29,6 @@ func (g *ListQuestionImpl) Handle() {
 		return
 	}
 	g.JSON(200, gin.H{
-		"questionList": ret,
+		"questions": ret,
 	})
 }

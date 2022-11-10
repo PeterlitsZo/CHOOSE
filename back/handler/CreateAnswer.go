@@ -33,5 +33,5 @@ func (g *CreateAnswerImpl) Handle() {
 		responseError(g.Context, db.Error)
 		return
 	}
-	ping(g.Context)
+	g.JSON(200, ans)
 }
