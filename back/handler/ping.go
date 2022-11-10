@@ -14,6 +14,6 @@ func responseOK(g *gin.Context) {
 
 func responseError(g *gin.Context, err error) {
 	g.JSON(400, gin.H{
-		"error": err,
+		"error": err.Error(),
 	})
 }
