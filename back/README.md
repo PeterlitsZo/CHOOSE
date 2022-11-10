@@ -15,8 +15,9 @@ bash db/migrate.sh
 API 遵守 [谷歌的 API 风格](https://cloud.google.com/apis/design/standard_methods?hl=zh-cn)，因此我们提供以下接口（资源类型表示都为 JSON）：
 
 - CreateAnswer，`POST /api/v1/answers`，请求模式见 [answer](#answer)，响应模式同见 [answer](#answer)。
-- ListAnswer，`GET /api/v1/answers?user_name={user_name}`，响应模式为模式 [answer](#answer) 的列表。
+- ListAnswer，`GET /api/v1/answers?user_name={user_name}`，响应模式为模式 [answer](#answer) 的列表。如果没有指定 `user_name`，则需要全量返回所有 [answer](#answer)。
 - GetQuestion，`GET /api/v1/questions/{id}`，响应模式见 [question](#question)。
+- ListQuestion，`GET /api/v1/questions`，相应模式为模式 [question](#question) 的列表。
 
 ### answer
 Example：
