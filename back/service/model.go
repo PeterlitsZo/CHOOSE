@@ -9,7 +9,7 @@ type Answer struct {
 }
 
 type Question struct {
-	Id       int64  `gorm:"id" json:"id" form:"id"`
+	Id       string `gorm:"id" json:"id" form:"id"`
 	Context  string `gorm:"context" json:"context" form:"context"`
 	Question string `gorm:"question" json:"question" form:"question"`
 }
