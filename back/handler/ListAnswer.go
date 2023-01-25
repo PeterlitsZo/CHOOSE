@@ -22,15 +22,13 @@ func (g *ListAnswerImpl) Handle() {
 	}
 	userName := g.Query("user_name")
 	if userName != "" {
-		db = db.Select("question, answer").Joins("join questions on answers.question_id = questions.id where answers.user_name = ?", userName)
-	} else {
-		db = db.Select("question, answer").Joins("join questions on answers.question_id = questions.id", userName)
+		db = db.Where("user_name = ?", userName)
 	}
 	if db.Error != nil {
 		responseError(g.Context, db.Error)
 		return
 	}
-	ret := make([]questionAndAnswer, 0)
+	ret := make([]service.Answer, 0)
 	db.Find(&ret)
 	if db.Error != nil {
 		responseError(g.Context, db.Error)
@@ -39,9 +37,4 @@ func (g *ListAnswerImpl) Handle() {
 	g.JSON(200, gin.H{
 		"answers": ret,
 	})
-}
-
-type questionAndAnswer struct {
-	Answer   string `json:"answer"`
-	Question string `json:"question"`
 }

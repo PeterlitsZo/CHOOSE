@@ -1,11 +1,16 @@
-import { Component, createSignal, For, Show } from "solid-js";
+import { Component, createEffect, createSignal, For, Show } from "solid-js";
 
 import styles from './Form.module.css';
 
 interface FormProps {
   content: string;
   question: string;
-  choices: string[];
+  choices: Choice[];
+  submitAndNext: (answer: {answer: string, isHardToAnswer: boolean}) => void;
+}
+
+export interface Choice {
+  content: string;
 }
 
 type Answer = {
@@ -24,8 +29,13 @@ type Answer = {
 
 export const Form: Component<FormProps> = (props) => {
   const [answer, setAnswer] = createSignal({state: 'unanswered'} as Answer)
+  const [isInputing, setIsInputing] = createSignal(false)
 
-  const setInnerAnswer = (c: string) => () => {
+  createEffect(() => {
+    console.log(props.choices)
+  })
+
+  const setInnerAnswer = (c: string) => {
     const a = answer();
     if (a.state === 'unanswered') {
       setAnswer({ ...a, state: 'unlabeled', answer: c });
@@ -33,6 +43,8 @@ export const Form: Component<FormProps> = (props) => {
       setAnswer({ ...a, answer: c })
     }
   };
+
+  let input: any;
 
   return (
     <div class={styles.FormWrapper}>
@@ -46,15 +58,42 @@ export const Form: Component<FormProps> = (props) => {
           </div>
           <For each={props.choices}>{c => (
             <div
-              onClick={setInnerAnswer(c)}
+              onClick={() => {
+                console.log(c)
+                setInnerAnswer(c.content)
+                setIsInputing(false)
+              }}
               classList={{
                 [styles.Choice]: true,
-                [styles.choosed]: c === answer().answer
+                [styles.choosed]: c.content === answer().answer
               }}
-            >{c}</div>
+            >{c.content}</div>
           )}</For>
+          <Show when={props.choices.length == 0}>
+            <div
+              classList={{
+                [styles.Choice]: true,
+                [styles.choosed]: isInputing(),
+              }}
+              onClick={() => {
+                input.focus()
+                setIsInputing(true)
+              }}
+            >
+              <input
+                ref={input}
+                class={styles.Input}
+                onInput={e => {
+                  setInnerAnswer(e.currentTarget.value)
+                }}
+              />
+            </div>
+          </Show>
           <div
-            onClick={setInnerAnswer("I don't know")}
+            onClick={() => {
+              setInnerAnswer("I don't know")
+              setIsInputing(false)
+            }}
             classList={{
               [styles.Choice]: true,
               [styles.choosed]: "I don't know" === answer().answer,
@@ -91,7 +130,14 @@ export const Form: Component<FormProps> = (props) => {
         </Show>
 
         <Show when={answer().state == 'ready-to-submit'}>
-          <button class={styles.Button}>Submit and Next</button>
+          <button
+            class={styles.Button}
+            onClick={() => {
+              props.submitAndNext({answer: answer().answer!, isHardToAnswer: answer().isHardToAnswer!})
+              setAnswer({state: 'unanswered', answer: undefined} as Answer)
+              setIsInputing(false)
+            }}
+          >Submit and Next</button>
         </Show>
       </div>
     </div>

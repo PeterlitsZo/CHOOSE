@@ -3,3 +3,34 @@
   display: flex;
   flex-direction: column;
 }
+
+.SetUserName {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10rem;
+  align-self: center;
+}
+
+.UserNameInput {
+  font-family: inherit;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  width: 20rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  margin-top: 0.5rem;
+}
+
+.UserNameButton {
+  align-self: end;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: rgb(40, 83, 126);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}

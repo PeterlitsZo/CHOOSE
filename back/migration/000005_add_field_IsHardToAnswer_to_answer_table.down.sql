@@ -1,0 +1,1 @@
+ALTER TABLE "answers" DROP COLUMN is_hard_to_answer;

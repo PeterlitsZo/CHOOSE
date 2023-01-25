@@ -15,7 +15,8 @@ type ListQuestionImpl struct {
 func (g *ListQuestionImpl) Handle() {
 	db := service.Db.Session(&gorm.Session{NewDB: true})
 	if db.Error != nil {
-		panic(db.Error)
+		responseError(g.Context, fmt.Errorf("get the sesstion: %w", db.Error))
+		return
 	}
 	db = db.Model(&service.Question{})
 	if db.Error != nil {
@@ -23,7 +24,7 @@ func (g *ListQuestionImpl) Handle() {
 		return
 	}
 	ret := make([]service.Question, 0)
-	db.Find(&ret)
+	db.Preload("Choices").Find(&ret)
 	if db.Error != nil {
 		responseError(g.Context, fmt.Errorf("find all questions: %w", db.Error))
 		return

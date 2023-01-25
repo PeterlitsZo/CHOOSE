@@ -1,0 +1,1 @@
+ALTER TABLE "answers" ADD COLUMN is_hard_to_answer BOOLEAN DEFAULT FALSE;

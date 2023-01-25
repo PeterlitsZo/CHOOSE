@@ -1,7 +1,7 @@
-DIR=$(cd $(dirname $0); pwd)
+DIR=$(cd $(dirname "$0"); pwd) # 脚本文件所在的目录
 
 CREATE_COMMAND="migrate create -ext sql -seq -dir $DIR/migration"
-OTHER_COMMAND="migrate -database sqlite3://$DIR/database.sqlite -source file://$DIR/migration"
+OTHER_COMMAND="migrate -database sqlite3://$DIR/db/database.sqlite -source file://$DIR/migration"
 
 if [[ "$1" == "create" ]]; then
     shift # 移除 create - 因为 CREATE_COMMDN 已经定义子命令了。

@@ -27,7 +27,8 @@ Example：
     "id": 1,
     "user_name": "foo",
     "question_id": "ff9f",
-    "answer": "I think..."
+    "answer": "I think...",
+    "is_hard_to_answer": true
 }
 ```
 
